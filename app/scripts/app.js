@@ -25,15 +25,15 @@ angular
       })
       .when('/accounts', {
         templateUrl: 'views/account.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountCtrl',
       })
-      .when('/newAccount', {
-        templateUrl: 'views/newAccount.html',
-        controller: 'AccountCtrl'
+      .when('/account/new', {
+        templateUrl: 'views/account/newAccount.html',
+        controller: 'NewaccountCtrl',
       })
       .when('/account/:accountId', {
         templateUrl: 'views/budget.html',
-        controller: 'BudgetCtrl'
+        controller: 'BudgetCtrl',
       })
       .otherwise({
         redirectTo: '/'

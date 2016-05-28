@@ -9,6 +9,7 @@
  */
 angular.module('myEasyBudgetFrontendApp')
   .controller('AccountCtrl', function ($scope, serviceAjax) {
+
     serviceAjax.getAllAccounts().success(function(data, status) {
       $scope.accounts = data;
     }).error(function(status) {
