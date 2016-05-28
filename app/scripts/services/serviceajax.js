@@ -21,4 +21,8 @@ angular.module('myEasyBudgetFrontendApp')
     this.createAccount = function(dataJson) {
       return $http.post('http://localhost:3000/api/accounts', dataJson);
     }
+
+    this.getAccount = function(dataJson) {
+      return $http.post('http://localhost:3000/api/accounts/', dataJson);
+    }
   });

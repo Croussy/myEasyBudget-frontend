@@ -10,4 +10,6 @@
 angular.module('myEasyBudgetFrontendApp')
   .controller('BudgetCtrl', function ($scope, $routeParams) {
     var id = $routeParams.accountId
+
+    
   });

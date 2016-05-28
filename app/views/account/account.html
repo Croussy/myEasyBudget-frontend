@@ -1,0 +1,15 @@
+<h1 class="text-center">Vos portefeuilles</h1>
+<div ng-init="index()">
+  <div ng-repeat="account in accounts">
+    <div class="box">
+      <a  href="/#/account/{{account.id}}">
+        <div class="bs-callout bs-callout-warning">
+          <h3 class="alignleft"><b>{{account.nameAccount}}</b></h3>
+            <h3 class="alignright"> <b>{{account.amount}} € </b></h3>
+            <p style="clear: both; text-decoration:none;"><b>{{account.description}}</b></p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <a href="/#/account/new"> <button class="btn btn-primary btn-lg">Créer un portefeuille</button></a>
+</div>

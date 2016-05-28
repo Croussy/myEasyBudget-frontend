@@ -24,16 +24,16 @@ angular
         controller: 'MainCtrl'
       })
       .when('/accounts', {
-        templateUrl: 'views/account.html',
-        controller: 'AccountCtrl',
+        templateUrl: 'views/account/account.html',
+        controller: 'AccountCtrl'
       })
       .when('/account/new', {
         templateUrl: 'views/account/newAccount.html',
-        controller: 'NewaccountCtrl',
+        controller: 'AccountCtrl'
       })
       .when('/account/:accountId', {
-        templateUrl: 'views/budget.html',
-        controller: 'BudgetCtrl',
+        templateUrl: 'views/budget/budget.html',
+        controller: 'BudgetCtrl'
       })
       .otherwise({
         redirectTo: '/'
