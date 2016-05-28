@@ -31,6 +31,10 @@ angular
         templateUrl: 'views/account/newAccount.html',
         controller: 'AccountCtrl'
       })
+      .when('/account/:accountId/edit', {
+        templateUrl: 'views/account/updateAccount.html',
+        controller: 'AccountCtrl'
+      })
       .when('/account/:accountId', {
         templateUrl: 'views/budget/budget.html',
         controller: 'BudgetCtrl'
