@@ -2,11 +2,15 @@
 <div ng-init="index()">
   <div ng-repeat="account in accounts">
     <div class="box">
-      <a  href="/#/account/{{account.id}}">
+      <a href="/#/account/{{account.id}}">
         <div class="bs-callout bs-callout-warning">
-          <h3 class="alignleft"><b>{{account.nameAccount}}</b></h3>
-            <h3 class="alignright"> <b>{{account.amount}} € </b></h3>
-            <p style="clear: both; text-decoration:none;"><b>{{account.description}}</b></p>
+          <h3 class="pull-left"><b>{{account.nameAccount}}</b></h3>
+          <h3 class="pull-right"> <b>{{account.amount}} € </b></h3>
+          <p style="clear: both;"><b>{{account.description}}</b></p>
+          <div class="pull-right">
+            <a href="/#/account/{{account.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="#" ng-click="delete($event)" data-id="{{account.id}}"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
         </div>
       </a>
     </div>

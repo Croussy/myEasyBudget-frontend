@@ -59,8 +59,9 @@ angular.module('myEasyBudgetFrontendApp')
 
     };
 
-    $scope.delete = function() {
-      return serviceAjax.deleteAccount($routeParams.accountId).success(function(data, status) {
+    $scope.delete = function(event) {
+      var id = $(event.currentTarget).attr("data-id");
+      return serviceAjax.deleteAccount(id).success(function(data, status) {
         return $location.path('/accounts')
       }).error(function(status) {
         return console.log(status);
