@@ -31,4 +31,8 @@ angular.module('myEasyBudgetFrontendApp')
     this.editAccount = function(dataJson, id) {
       return $http.put('http://localhost:3000/api/accounts/'+ id, dataJson);
     };
+
+    this.deleteAccount = function(id) {
+      return $http.delete('http://localhost:3000/api/accounts/'+ id);
+    }
   });
