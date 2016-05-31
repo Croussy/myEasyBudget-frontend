@@ -20,14 +20,14 @@ angular.module('myEasyBudgetFrontendApp')
     };
 
     $scope.createAccount = function() {
-      $scope.accountJson = {
-        'nameAccount': $scope.registerForm.nameAccount.$modelValue,
+      var accountJson = {
+        'nameAccount': $scope.registerForm.name_account.$modelValue,
         'description': $scope.registerForm.description.$modelValue,
         'amount': $scope.registerForm.amount.$modelValue,
-        'nameBank': $scope.registerForm.nameBank.$modelValue
+        'nameBank': $scope.registerForm.name_bank.$modelValue
       };
 
-      return serviceAjax.createAccount($scope.accountJson).success(function(data, status) {
+      return serviceAjax.createAccount(accountJson).success(function(data, status) {
         return $location.path('/accounts');
       }).error(function(status) {
         return console.log(status);
@@ -44,14 +44,14 @@ angular.module('myEasyBudgetFrontendApp')
 
     $scope.editAccount = function() {
       var id = $scope.registerForm.id.$modelValue;
-      $scope.accountJson = {
+      var accountJson = {
         'nameAccount': $scope.registerForm.nameAccount.$modelValue,
         'description': $scope.registerForm.description.$modelValue,
         'amount': $scope.registerForm.amount.$modelValue,
         'nameBank': $scope.registerForm.nameBank.$modelValue
       };
 
-      return serviceAjax.editAccount($scope.accountJson, id).success(function(data, status) {
+      return serviceAjax.editAccount(accountJson, id).success(function(data, status) {
         return $location.path('/account/'+ id);
       }).error(function(status) {
         return console.log(status);

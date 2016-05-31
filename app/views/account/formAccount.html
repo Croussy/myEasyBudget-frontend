@@ -1,6 +1,6 @@
 <div class="form-group">
-  <label for="nameAccount">Nom du portefeuille</label>
-  <input type="text" class="form-control" name="nameAccount" id="nameAccount" placeholder="Nom du portefeuille" data-ng-model="account.nameAccount">
+  <label for="name_account">Nom du portefeuille</label>
+  <input type="text" class="form-control" name="name_account" id="name_account" placeholder="Nom du portefeuille" data-ng-model="account.nameAccount">
 </div>
 <div class="form-group">
   <label for="Description">Description</label>
@@ -8,11 +8,12 @@
 </div>
 <div class="form-group">
   <label for="amount">Montant</label>
-  <input type="text" class="form-control" name="amount" id="amount" placeholder="Montant" data-ng-model="account.amount">
+  <input type="number" class="form-control" value="1000" min="0" name="amount" id="amount" step="1"
+         data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Montant" data-ng-model="account.amount" />
 </div>
 <div class="form-group">
-  <label for="nameBank">Nom de la banque</label>
-  <input type="text" class="form-control" name="nameBank" id="nameBank" placeholder="Nom de la banque" data-ng-model="account.nameBank">
+  <label for="name_bank">Nom de la banque</label>
+  <input type="text" class="form-control" name="name_bank" id="name_bank" placeholder="Nom de la banque" data-ng-model="account.nameBank">
 </div>
 <input type="hidden" class="form-control" name="id" id="id" placeholder="id" data-ng-model="account.id">
 
