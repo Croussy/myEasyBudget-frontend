@@ -1,0 +1,11 @@
+<h1 class="text-center">Modifier le budget</h1>
+<!--<form name="registerForm" ng-submit="createAccount()">-->
+<div ng-init="edit()">
+  <form name="update_form" data-ng-submit="editBudget()">
+
+    <div ng-include src="'views/budget/formBudget.html'"></div>
+
+    <button type="submit" class="btn btn-success">Modifier</button>
+    <a href="/#/accounts"> <button type="button" class="btn btn-default">Retour</button></a>
+  </form>
+</div>

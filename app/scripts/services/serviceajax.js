@@ -16,10 +16,6 @@ angular.module('myEasyBudgetFrontendApp')
       return $http.get('http://localhost:3000/api/accounts');
     };
 
-    this.getAllBudgetAccount = function(){
-      return $http.get('http://localhost:3000/api/accounts');
-    };
-
     this.createAccount = function(dataJson) {
       return $http.post('http://localhost:3000/api/accounts', dataJson);
     };
@@ -34,5 +30,26 @@ angular.module('myEasyBudgetFrontendApp')
 
     this.deleteAccount = function(id) {
       return $http.delete('http://localhost:3000/api/accounts/'+ id);
-    }
+    };
+
+    // Budget
+    this.getAllBudgets = function(id) {
+      return $http.get('http://localhost:3000/api/accounts/'+ id + '/budgets');
+    };
+
+    this.create_budget = function(dataJson) {
+      return $http.post('http://localhost:3000/api/budgets', dataJson);
+    };
+
+    this.get_budget = function(id) {
+      return $http.get('http://localhost:3000/api/budgets/'+ id);
+    };
+
+    this.edit_budget = function(dataJson, id) {
+      return $http.put('http://localhost:3000/api/budgets/'+ id, dataJson);
+    };
+
+    this.delete_budget = function(id) {
+      return $http.delete('http://localhost:3000/api/budgets/'+ id);
+    };
   });

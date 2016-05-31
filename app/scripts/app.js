@@ -39,6 +39,14 @@ angular
         templateUrl: 'views/budget/budget.html',
         controller: 'BudgetCtrl'
       })
+      .when('/account/:accountId/budget/new', {
+        templateUrl: 'views/budget/newBudget.html',
+        controller: 'BudgetCtrl'
+      })
+      .when('/account/:account_id/budget/:budget_id/edit', {
+        templateUrl: 'views/budget/editBudget.html',
+        controller: 'BudgetCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
