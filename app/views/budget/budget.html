@@ -1,5 +1,20 @@
-<h1 class="text-center">Les budgets de </h1>
-<div class="pull-left" ng-controller="AccountCtrl" >
-  <a href="/#/account/{{id}}/edit"> <button type="button" class="btn btn-warning ">Modifier le portefeuille</button></a>
-  <button type="button" class="btn btn-danger" ng-click="delete()">Supprimer le portefeuille</button>
+<div ng-init="index()">
+  <h1 class="text-center">Les budgets de {{account.nameAccount}}</h1>
+  <div ng-repeat="budget in budgets">
+    <div class="box">
+      <a href="/#/">
+        <div class="bs-callout bs-callout-warning">
+          <h3 class="pull-left"><b>{{budget.name}}</b></h3>
+          <h3 class="pull-right"> <b>{{budget.amount}} € / {{budget.target_amount}} € </b></h3>
+          <p style="clear: both;"><b>{{budget.dateDeb | date:'dd/MM/yyyy'}} au {{budget.dateEnd | date:'dd/MM/yyyy'}}</b></p>
+          <div class="pull-right">
+            <a href="/#/account/{{id}}/budget/{{budget.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="#" ng-click="delete($event)" data-id="{{budget.id}}"><span class="glyphicon glyphicon-remove"></span></a>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <a href="/#/account/{{id}}/budget/new"> <button class="btn btn-primary btn-lg">Créer un budget</button></a>
+  <a href="/#/accounts"> <button type="button" class="btn btn-default btn-lg pull-right">Retour</button></a>
 </div>

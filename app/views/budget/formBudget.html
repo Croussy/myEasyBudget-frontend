@@ -1,0 +1,27 @@
+<div class="form-group">
+  <label for="name_budget">Nom du budget</label>
+  <input type="text" class="form-control" name="name_budget" id="name_budget" placeholder="Nom du budget"
+         data-ng-model="budget.name">
+</div>
+<div class="form-group">
+  <label for="target_amount">Objectif du budget</label>
+  <input type="number" class="form-control" value="1000" min="0" name="target_amount" id="target_amount" step="1"
+         data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Objectif du budget" data-ng-model="budget.target_amount" />
+</div>
+<div class="form-group">
+  <label for="amount">Montant du budget</label>
+  <input type="number" class="form-control" value="1000" min="0" name="amount" id="amount" step="1"
+         data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Montant du budget" data-ng-model="budget.amount" />
+</div>
+<div class="form-group">
+  <label for="date_deb">Date de début</label>
+  <input type="date" class="form-control" name="date_deb" id="date_deb" data-ng-model="budget.date_deb">
+</div>
+<div class="form-group">
+  <label for="date_end">Date de fin</label>
+  <input type="date" class="form-control" name="date_end" id="date_end" data-ng-model="budget.date_end">
+</div>
+<div class="checkbox" ng-if="action == 'edit'">
+  <label><input type="checkbox" name="is_closure" id="is_closure" data-ng-model="budget.isClosure">Cloturé</label>
+</div>
+<input type="hidden" class="form-control" name="id_account" id="id_account" ng-value="id"/>
