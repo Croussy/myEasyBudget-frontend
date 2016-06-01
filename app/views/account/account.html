@@ -1,19 +1,21 @@
-<h1 class="text-center">Vos portefeuilles</h1>
-<div ng-init="index()">
-  <div ng-repeat="account in accounts">
-    <div class="box">
-      <a href="/#/account/{{account.id}}">
-        <div class="bs-callout bs-callout-warning">
-          <h3 class="pull-left"><b>{{account.nameAccount}}</b></h3>
-          <h3 class="pull-right"> <b>{{account.amount}} € </b></h3>
-          <p style="clear: both;"><b>{{account.description}}</b></p>
-          <div class="pull-right">
-            <a href="/#/account/{{account.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a href="#" ng-click="delete($event)" data-id="{{account.id}}"><span class="glyphicon glyphicon-remove"></span></a>
+<div class="container">
+  <h1 class="text-center">Vos portefeuilles</h1>
+  <div ng-init="index()">
+    <div ng-repeat="account in accounts">
+      <div class="box">
+        <a href="/#/account/{{account.id}}">
+          <div class="bs-callout bs-callout-warning">
+            <h3 class="pull-left"><b>{{account.nameAccount}}</b></h3>
+            <h3 class="pull-right"> <b>{{account.amount}} € </b></h3>
+            <p style="clear: both;"><b>{{account.description}}</b></p>
+            <div class="pull-right">
+              <a href="/#/account/{{account.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+              <a href="#" ng-click="delete($event)" data-id="{{account.id}}"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
+    <a href="/#/account/new"> <button class="btn btn-primary btn-lg">Créer un portefeuille</button></a>
   </div>
-  <a href="/#/account/new"> <button class="btn btn-primary btn-lg">Créer un portefeuille</button></a>
 </div>

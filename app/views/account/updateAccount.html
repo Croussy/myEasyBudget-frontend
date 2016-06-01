@@ -1,11 +1,13 @@
-<h1 class="text-center">Modifier portefeuille</h1>
-<!--<form name="registerForm" ng-submit="createAccount()">-->
-<div ng-init="getAccount()">
-  <form name="registerForm" data-ng-submit="editAccount()">
+<div class="container">
+  <h1 class="text-center">Modifier portefeuille</h1>
+  <!--<form name="registerForm" ng-submit="createAccount()">-->
+  <div ng-init="getAccount()">
+    <form name="registerForm" data-ng-submit="editAccount()">
 
-    <div ng-include src="'views/account/formAccount.html'"></div>
+      <div ng-include src="'views/account/formAccount.html'"></div>
 
-    <button type="submit" class="btn btn-success" value="Modifier">Submit</button>
-    <a href="/#/accounts"> <button type="button" class="btn btn-default">Retour</button></a>
-  </form>
+      <button type="submit" class="btn btn-success" value="Modifier">Submit</button>
+      <a href="/#/accounts"> <button type="button" class="btn btn-default">Retour</button></a>
+    </form>
+  </div>
 </div>
