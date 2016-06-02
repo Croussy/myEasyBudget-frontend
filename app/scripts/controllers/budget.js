@@ -42,7 +42,6 @@ angular.module('myEasyBudgetFrontendApp')
     $scope.editBudget = function() {
       var budgetJson = {
         'name': $scope.update_form.name_budget.$modelValue,
-        "target_amount": $scope.update_form.target_amount.$modelValue,
         "amount": $scope.update_form.amount.$modelValue,
         "dateDeb": $scope.update_form.date_deb.$modelValue,
         "dateEnd": $scope.update_form.date_end.$modelValue,
@@ -60,7 +59,6 @@ angular.module('myEasyBudgetFrontendApp')
       var budgetJson = {
         'accountId': $scope.id,
         'name': $scope.registerForm.name_budget.$modelValue,
-        "target_amount": $scope.registerForm.target_amount.$modelValue,
         "amount": $scope.registerForm.amount.$modelValue,
         "dateDeb": $scope.registerForm.date_deb.$modelValue,
         "dateEnd": $scope.registerForm.date_end.$modelValue,
@@ -81,5 +79,14 @@ angular.module('myEasyBudgetFrontendApp')
       }).error(function(status) {
         return console.log(status);
       });
-    }
+    };
+
+    $scope.show = function() {
+      var id = $routeParams.budget_id;
+      return serviceAjax.get_budget(id).success(function(data, status){
+        $scope.budget = data;
+      }).error(function(status) {
+        return console.log(status);
+      });
+    };
   });
