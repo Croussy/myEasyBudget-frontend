@@ -26,11 +26,10 @@
           <div class="navbar-header">
             <a class="navbar-brand" href="#/">My Easy Budget</a>
           </div>
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="HeadercontrollerCtrl">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/accounts">Portefeuilles</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li ng-class="{ active: isActive('/accounts')}"><a href="#/accounts">Portefeuilles</a></li>
+              <li ng-class="{ active: isActive('/projects')}"><a href="#/projects">Projets</a></li>
             </ul>
           </div>
       </div>
@@ -79,6 +78,8 @@
         <script src="scripts/controllers/account.js"></script>
         <script src="scripts/services/serviceajax.js"></script>
         <script src="scripts/controllers/budget.js"></script>
+        <script src="scripts/controllers/project.js"></script>
+        <script src="scripts/controllers/headercontroller.js"></script>
         <!-- endbuild -->
 </body>
 </html>
