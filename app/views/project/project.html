@@ -1,0 +1,22 @@
+<div ng-init="index()">
+  <div class="container">
+    <h1 class="text-center">Mes projets</h1>
+    <div ng-repeat="project in projects">
+      <div class="box">
+        <a href="/#/project/{{project.id}}/">
+          <div class="bs-callout bs-callout-warning">
+            <h3 class="pull-left"><b>{{project.name}}</b></h3>
+            <h3 class="pull-right"> <b>{{project.amount}} € / {{project.target_amount}} €</b></h3>
+            <p style="clear: both;"><b>{{project.dateDeb | date:'dd/MM/yyyy'}} <span ng-show="project.dateEnd">au {{project.dateEnd | date:'dd/MM/yyyy'}}</span></b></p>
+            <div class="pull-right">
+              <a href="/#/project/{{project.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+              <a href="#" ng-click="delete($event)" data-id="{{project.id}}"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <a href="/#/project/new"> <button class="btn btn-primary btn-lg">Créer un project</button></a>
+    <a href="/#/accounts"> <button type="button" class="btn btn-default btn-lg pull-right">Retour</button></a>
+  </div>
+</div>

@@ -47,6 +47,22 @@ angular
         templateUrl: 'views/budget/editBudget.html',
         controller: 'BudgetCtrl'
       })
+      .when('/account/:account_id/budget/:budget_id', {
+        templateUrl: 'views/budget/showBudget.html',
+        controller: 'BudgetCtrl'
+      })
+      .when('/projects', {
+        templateUrl: 'views/project/project.html',
+        controller: 'ProjectCtrl'
+      })
+      .when('/project/new', {
+        templateUrl: 'views/project/newProject.html',
+        controller: 'ProjectCtrl'
+      })
+      .when('/project/:project_id/edit', {
+        templateUrl: 'views/project/editProject.html',
+        controller: 'ProjectCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

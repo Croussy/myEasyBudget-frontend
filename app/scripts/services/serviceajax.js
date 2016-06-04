@@ -52,4 +52,25 @@ angular.module('myEasyBudgetFrontendApp')
     this.delete_budget = function(id) {
       return $http.delete('http://localhost:3000/api/budgets/'+ id);
     };
+
+    //Projects
+    this.getAllProjects = function() {
+      return $http.get('http://localhost:3000/api/projects');
+    };
+
+    this.create_project = function(dataJson) {
+      return $http.post('http://localhost:3000/api/projects', dataJson);
+    };
+
+    this.get_project = function(id) {
+      return $http.get('http://localhost:3000/api/projects/'+ id);
+    };
+
+    this.edit_project = function(dataJson, id) {
+      return $http.put('http://localhost:3000/api/projects/'+ id, dataJson);
+    };
+
+    this.delete_project = function(id) {
+      return $http.delete('http://localhost:3000/api/projects/'+ id);
+    };
   });
