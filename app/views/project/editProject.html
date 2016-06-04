@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="text-center">Editer le projet</h1>
+  <div ng-init="edit()">
+    <form name="registerForm" data-ng-submit="editProject()">
+
+      <div ng-include src="'views/project/formProject.html'"></div>
+
+      <button type="submit" class="btn btn-success">Editer</button>
+      <a href="/#/projects"> <button type="button" class="btn btn-default">Retour</button></a>
+    </form>
+  </div>
+</div>
+
