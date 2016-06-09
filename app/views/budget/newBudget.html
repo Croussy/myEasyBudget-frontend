@@ -1,10 +1,15 @@
 <div class="container">
-  <h1 class="text-center">Nouveaux budget</h1>
-  <form name="registerForm" data-ng-submit="createBudget()">
+  <h1 class="text-center">Etape 1</h1>
+  <div class="row">
+    <h2 class="pull-left">Nouveaux budget</h2>
+  </div>
+  <div class="row">
+    <form name="registerForm" data-ng-submit="createBudget()">
 
-    <div ng-include src="'views/budget/formBudget.html'"></div>
+      <div ng-include src="'views/budget/formBudget.html'"></div>
 
-    <button type="submit" class="btn btn-success">Créer</button>
-    <a href="/#/account/{{id}}"> <button type="button" class="btn btn-default">Retour</button></a>
-  </form>
+      <button type="submit" class="btn btn-success">Etape suivante</button>
+      <a href="/#/account/{{id}}"><button type="button" class="btn btn-default">Retour</button></a>
+    </form>
+  </div>
 </div>

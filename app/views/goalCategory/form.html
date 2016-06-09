@@ -1,0 +1,54 @@
+<div ng-init="form()">
+  <h1 class="text-center">Etape 2</h1>
+  <div class="container">
+    <div class="row">
+      <h2 class="pull-left">Ajout des objectifs</h2>
+      <table class="table table-striped">
+        <thread>
+          <tr>
+            <th>Catégorie</th>
+            <th>Objectif</th>
+            <th></th>
+          </tr>
+        </thread>
+        <tbody>
+        <tr ng-repeat="goal_category in goals_category">
+          <td>{{goal_category.nameCategory}}</td>
+          <td>{{goal_category.targetAmountCateg}}</td>
+          <td><a href="" ng-click="delete($event)" data-id="{{goal_category.id}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row" ng-show="categories.length == 0">
+      <div class="alert alert-success" role="alert"><strong>Success!</strong> Vous avez terminé la création du budget !</div>
+      <a href="/#/account/{{account_id}}/budget/{{id}}"><button type="button" class="btn btn-info">Fin de la création</button></a>
+    </div>
+
+    <div ng-show="categories.length > 0">
+      <div class="row">
+        <form name="addCategory" class="form"  data-ng-submit="add_goal()">
+          <div class="form-group">
+            <div class="col-md-5">
+              <select name="category" id="category" class="form-control" ng-model="new_goal.category_id">
+                <option value="">Selectionner une catégorie</option>
+                <option ng-repeat="category in categories" value="{{category.id}}">{{category.nameCategory}}</option>
+              </select>
+            </div>
+            <div class="col-md-5">
+              <input required type="number" class="form-control" min="0" name="amount" id="target_amount"  step="1"
+                     data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Objectif en €" ng-model="new_goal.target_amount" />
+            </div>
+            <div class="col-md-1">
+              <button type="submit" class="btn btn-success">Ajouter</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <br/>
+        <a href="/#/account/{{account_id}}/budget/{{id}}"><button class="btn btn-warning">Ajouter les objectifs ultérieurement</button></a>
+      </div>
+    </div>
+  </div>
+</div>

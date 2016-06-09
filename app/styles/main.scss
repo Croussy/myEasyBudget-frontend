@@ -71,9 +71,6 @@ body {
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
   /* Remove the padding we set earlier */
   .header,
@@ -94,4 +91,12 @@ body {
 
 .box {
   @import "account";
+}
+
+.glyphicon-remove {
+  color: #2199e8;
+}
+
+.glyphicon-remove:hover {
+  color: #1585cf;
 }
