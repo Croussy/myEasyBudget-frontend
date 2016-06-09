@@ -53,6 +53,18 @@ angular.module('myEasyBudgetFrontendApp')
       return $http.delete('http://localhost:3000/api/budgets/'+ id);
     };
 
+    this.get_all_goals_category_budget = function(id) {
+      return $http.get('http://localhost:3000/api/budgets/'+id+'/goalCategories');
+    };
+
+    this.create_goal_category_budget = function(id, dataJson) {
+      return $http.post('http://localhost:3000/api/budgets/'+id+'/goalCategories', dataJson);
+    };
+
+    this.delete_goal_category = function(id) {
+      return $http.delete('http://localhost:3000/api/goalCategories/'+id);
+    };
+
     //Projects
     this.getAllProjects = function() {
       return $http.get('http://localhost:3000/api/projects');
@@ -72,5 +84,15 @@ angular.module('myEasyBudgetFrontendApp')
 
     this.delete_project = function(id) {
       return $http.delete('http://localhost:3000/api/projects/'+ id);
+    };
+
+    // Category
+    this.get_all_categories = function() {
+      return $http.get('http://localhost:3000/api/categories');
+    };
+
+    // Goal category
+    this.get_category = function(id) {
+      return $http.get('http://localhost:3000/api/categories/'+ id);
     };
   });

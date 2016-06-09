@@ -27,6 +27,21 @@ angular.module('myEasyBudgetFrontendApp')
       });
     };
 
+    $scope.goal_objective = function() {
+      console.log("test");
+      console.log($scope);
+      serviceAjax.get_all_categories().success(function(data, status) {
+        return $scope.categories = data;
+      }).error(function(status) {
+        console.log("error");
+        console.log(status);
+      });
+    };
+
+    $scope.objectif = function() {
+      console.log("test objective");
+    };
+
     $scope.edit = function() {
       $scope.action = "edit";
       serviceAjax.get_budget($routeParams.budget_id).success(function(data, status) {
@@ -48,7 +63,7 @@ angular.module('myEasyBudgetFrontendApp')
         "isClosure": $scope.update_form.is_closure.$modelValue
       };
 
-      return serviceAjax.edit_budget(budgetJson, $routeParams.budget_id).success(function(data, status) {
+      return serviceAjax.edit_budget(budgetJson, $routeParams.budget_id).success(function() {
         return $location.path('/account/'+ $scope.id);
       }).error(function(status) {
         return console.log(status);
@@ -65,8 +80,8 @@ angular.module('myEasyBudgetFrontendApp')
         "isClosure": false
       };
 
-      return serviceAjax.create_budget(budgetJson).success(function() {
-        return $location.path('/account/'+ $scope.id);
+      return serviceAjax.create_budget(budgetJson).success(function(data) {
+        return $location.path('/account/'+$scope.id+'/budget/'+ data.id + '/category');
       }).error(function(status) {
         return console.log(status);
       });
@@ -85,8 +100,12 @@ angular.module('myEasyBudgetFrontendApp')
       var id = $routeParams.budget_id;
       return serviceAjax.get_budget(id).success(function(data, status){
         $scope.budget = data;
+
+        // highchart
+
       }).error(function(status) {
         return console.log(status);
       });
+
     };
   });

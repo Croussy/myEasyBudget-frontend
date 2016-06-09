@@ -19,4 +19,50 @@
 <div class="checkbox" ng-if="action == 'edit'">
   <label><input type="checkbox" name="is_closure" id="is_closure" data-ng-model="budget.isClosure">Cloturé</label>
 </div>
+<!--<div ng-init="goal_objective()" >
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Objectif par catégorie</h3>
+      <table class="table table-striped" style="background: white;">
+        <thread>
+          <tr>
+            <td>Catégorie</td>
+            <td>Objectif</td>
+            <td></td>
+          </tr>
+        </thread>
+        <tbody>
+        <tr class="info">
+          <td>test</td>
+          <td>10</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h4>Ajouter un objectif</h4>-->
+<!--  <div class="row">
+    <form name="addCategory" class="form" data-ng-submit="objectif()">
+      <div class="form-group">
+        <div class="col-md-5">
+          <select name="category" id="category" class="form-control" ng-model="category">
+            <option value="">Selectionner une catégorie</option>
+            <option ng-repeat="category in categories" value="{{category.id}}">{{category.nameCategory}}</option>
+          </select>
+        </div>
+        <div class="col-md-5">
+          <input required type="number" class="form-control" min="0" name="amount" id="target_amount"  step="1"
+                 data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Objectif en €" />
+        </div>
+        <div class="col-md-1">
+          <button type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+      </div>
+    </form>
+  </div>-->
+<!--</div>-->
+<br />
+
 <input type="hidden" class="form-control" name="id_account" id="id_account" ng-value="id"/>
+
