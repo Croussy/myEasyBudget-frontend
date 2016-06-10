@@ -15,13 +15,26 @@
         </div>
       </div>
 
-      <div style="background: red;" class="col-md-6">
-        <h1 class="text-center">Container</h1>
+      <div  class="col-md-6" ng-controller="HighchartsbudgetCtrl">
+        <div id="containerChart" style="height: 400px; margin: 0 auto"></div>
       </div>
 
       <div class="col-md-3">
         <div style="background: white;" class="col-md-10 col-md-offset-1">
-          <h1 class="text-center">Objectif</h1>
+          <h1 class="text-center">Objectifs</h1>
+          <hr>
+          <div ng-repeat="goal in goals_categories">
+            <h3><b>{{goal.nameCategory}}</b> - <i>{{goal.amountCateg}} €</i> <a href=""><small><span class="glyphicon glyphicon-pencil"></span></small></a></h3>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="{{getPercentage(goal.amountCateg, goal.targetAmountCateg)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( getPercentage(goal.amountCateg, goal.targetAmountCateg) + '%' ) }">
+                <span>{{getPercentage(goal.amountCateg, goal.targetAmountCateg)}}%</span>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div ng-show="goals_categories == 0">
+            <h3 class="text-center">Aucun objectif n'a été définie</h3>
+          </div>
         </div>
       </div>
     </div>
