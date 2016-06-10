@@ -10,6 +10,7 @@
 angular.module('myEasyBudgetFrontendApp')
   .controller('BudgetCtrl', function ($scope, serviceAjax, $location, $routeParams) {
     $scope.id = $routeParams.account_id;
+    $scope.budget_id = $routeParams.budget_id;
 
     $scope.index = function() {
       serviceAjax.getAccount($scope.id).success(function(data, status) {
@@ -81,7 +82,7 @@ angular.module('myEasyBudgetFrontendApp')
       };
 
       return serviceAjax.create_budget(budgetJson).success(function(data) {
-        return $location.path('/account/'+$scope.id+'/budget/'+ data.id + '/category');
+        return $location.path('/account/'+$scope.id+'/budget/'+ data.id + '/goal_category/new');
       }).error(function(status) {
         return console.log(status);
       });
@@ -98,7 +99,7 @@ angular.module('myEasyBudgetFrontendApp')
 
     $scope.show = function() {
       var id = $routeParams.budget_id;
-      return serviceAjax.get_budget(id).success(function(data, status){
+      serviceAjax.get_budget(id).success(function(data, status){
         $scope.budget = data;
 
         // highchart
@@ -107,5 +108,16 @@ angular.module('myEasyBudgetFrontendApp')
         return console.log(status);
       });
 
+      serviceAjax.get_all_goals_category_budget($scope.budget_id).success(function(data, status){
+        console.log(data.length);
+        $scope.goals_categories = data;
+      }).error(function(status) {
+        return console.log(status);
+      });
+
+    };
+
+    $scope.getPercentage = function(amount, target_amount) {
+      return Math.round((amount * 100) / target_amount);
     };
   });

@@ -63,7 +63,7 @@ angular
         templateUrl: 'views/project/editProject.html',
         controller: 'ProjectCtrl'
       })
-      .when('/account/:account_id/budget/:budget_id/category', {
+      .when('/account/:account_id/budget/:budget_id/goal_category/new', {
         templateUrl: 'views/goalCategory/form.html',
         controller: 'GoalCategoryCtrl'
       })
