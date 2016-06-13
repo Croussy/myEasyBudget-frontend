@@ -1,0 +1,17 @@
+<div class="container" ng-init="edit()">
+  <h1 class="text-center">{{goal_category.nameCategory}}</h1>
+
+  <form name="editGoalCategory"  data-ng-submit="editGoal()">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label for="target_amount"><h3>Objectif de la categorie</h3> </label>
+        <input required type="number" class="form-control" value="1000" min="0" name="target_amount" id="target_amount" step="1"
+               data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Montant de l'objectif" data-ng-model="goal_category.targetAmountCateg" />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Editer</button>
+        <a href="/#/account/{{account_id}}/budget/{{id}}"><button type="button" class="btn btn-default">Retour</button></a>
+      </div>
+    </div>
+  </form>
+</div>

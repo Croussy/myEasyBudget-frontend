@@ -92,4 +92,22 @@ angular.module('myEasyBudgetFrontendApp')
       };
 
     };
+
+    $scope.edit = function() {
+      serviceAjax.get_goal_category($routeParams.goal_category_id).success(function (data, status) {
+        $scope.goal_category = data;
+      }).error(function(status) {
+        console.log("error");
+        console.log(status);
+      });
+    };
+
+    $scope.editGoal = function() {
+      serviceAjax.edit_goal_category($scope.goal_category, $scope.goal_category.id).success(function (data, status) {
+        return $location.path('/account/'+ $scope.account_id + '/budget/'+ $scope.id);
+      }).error(function(status) {
+        console.log("error");
+        console.log(status);
+      });
+    };
   });

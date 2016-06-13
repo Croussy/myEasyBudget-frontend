@@ -67,6 +67,10 @@ angular
         templateUrl: 'views/goalCategory/form.html',
         controller: 'GoalCategoryCtrl'
       })
+      .when('/account/:account_id/budget/:budget_id/goal_category/:goal_category_id/edit', {
+        templateUrl: 'views/goalCategory/editGoal.html',
+        controller: 'GoalCategoryCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
