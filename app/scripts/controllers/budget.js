@@ -109,7 +109,6 @@ angular.module('myEasyBudgetFrontendApp')
       });
 
       serviceAjax.get_all_goals_category_budget($scope.budget_id).success(function(data, status){
-        console.log(data.length);
         $scope.goals_categories = data;
       }).error(function(status) {
         return console.log(status);
