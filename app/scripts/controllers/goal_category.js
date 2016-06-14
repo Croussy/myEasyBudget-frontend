@@ -41,7 +41,6 @@ angular.module('myEasyBudgetFrontendApp')
 
 
       $scope.add_goal = function() {
-        console.log($scope);
         serviceAjax.get_category($scope.new_goal.category_id).success(function(data, status) {
           var goalJson = {
             "targetAmountCateg": $scope.new_goal.target_amount,
