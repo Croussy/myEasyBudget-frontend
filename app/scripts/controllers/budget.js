@@ -110,6 +110,25 @@ angular.module('myEasyBudgetFrontendApp')
 
       serviceAjax.get_all_goals_category_budget($scope.budget_id).success(function(data, status){
         $scope.goals_categories = data;
+        serviceAjax.get_all_categories().success(function(data, status) {
+          var number = data.length;
+          var find = false;
+          angular.forEach(data, function(category) {
+            angular.forEach($scope.goals_categories, function(goal) {
+              if(goal.categoryId == category.id) {
+                find = true;
+              }
+            });
+            if(find == true) {
+              --number;
+              find = false;
+            }
+          });
+          $scope.number_category = number;
+        }).error(function(status) {
+          console.log("error");
+          console.log(status);
+        });
       }).error(function(status) {
         return console.log(status);
       });
