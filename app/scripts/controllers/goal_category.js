@@ -41,27 +41,32 @@ angular.module('myEasyBudgetFrontendApp')
 
 
       $scope.add_goal = function() {
-        serviceAjax.get_category($scope.new_goal.category_id).success(function(data, status) {
-          var goalJson = {
-            "targetAmountCateg": $scope.new_goal.target_amount,
-            "amountCateg": 0,
-            "nameCategory": data.nameCategory,
-            "categoryId": data.id
-          };
-          serviceAjax.create_goal_category_budget($scope.id, goalJson).success(function(data,status) {
-            deleteJson($scope.categories, $scope.new_goal.category_id);
-            goalJson.id = data.id;
-            $scope.new_goal.target_amount = null;
-            $scope.new_goal.category_id = null;
-            return $scope.goals_category.push(goalJson);
-          }).error(function(status) {
-            console.log("error");
-            console.log(status);
-          });
+        var goalJson = {
+          "targetAmountCateg": $scope.new_goal.target_amount,
+          "amountCateg": 0,
+          "nameCategory": get_name_category($scope.new_goal.category_id),
+          "categoryId": $scope.new_goal.category_id
+        };
+        serviceAjax.create_goal_category_budget($scope.id, goalJson).success(function(data,status) {
+          deleteJson($scope.categories, $scope.new_goal.category_id);
+          goalJson.id = data.id;
+          $scope.new_goal.target_amount = null;
+          $scope.new_goal.category_id = null;
+          return $scope.goals_category.push(goalJson);
         }).error(function(status) {
           console.log("error");
           console.log(status);
         });
+      };
+
+      var get_name_category = function(id) {
+        var res = null;
+        angular.forEach($scope.categories, function(category) {
+          if(category.id == id) {
+            res = category.nameCategory;
+          }
+        });
+        return res;
       };
 
       $scope.delete = function(event) {
