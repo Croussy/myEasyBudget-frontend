@@ -20,13 +20,8 @@ angular.module('myEasyBudgetFrontendApp')
       });
     };
 
-    $scope.create = function () {
-      $scope.purchase = null;
-    };
-
     $scope.create_purchase = function() {
-      console.log($scope);
-/*      var purchaseJson = {
+      var purchaseJson = {
         "namePurchase": $scope.registerForm.name_purchase.$modelValue,
         "amountPurchase": $scope.registerForm.amount_purchase.$modelValue,
         "nameSeller": $scope.registerForm.name_seller.$modelValue,
@@ -39,7 +34,7 @@ angular.module('myEasyBudgetFrontendApp')
         return $location.path('/account/'+ $scope.account_id +'/budget/'+ $scope.budget_id)
       }).error(function(status) {
         console.log(status);
-      });*/
+      });
     };
 
     $scope.edit = function() {
