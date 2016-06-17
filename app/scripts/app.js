@@ -71,6 +71,14 @@ angular
         templateUrl: 'views/goalCategory/editGoal.html',
         controller: 'GoalCategoryCtrl'
       })
+      .when('/account/:account_id/budget/:budget_id/purchase/new', {
+        templateUrl: 'views/purchase/newPurchase.html',
+        controller: 'PurchaseCtrl'
+      })
+      .when('/account/:account_id/budget/:budget_id/purchase/:purchase_id/edit', {
+        templateUrl: 'views/purchase/editPurchase.html',
+        controller: 'PurchaseCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

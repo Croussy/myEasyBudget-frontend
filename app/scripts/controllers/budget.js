@@ -108,9 +108,9 @@ angular.module('myEasyBudgetFrontendApp')
         return console.log(status);
       });
 
-      serviceAjax.get_all_goals_category_budget($scope.budget_id).success(function(data, status){
+      serviceAjax.get_all_goals_category_budget($scope.budget_id).success(function(data){
         $scope.goals_categories = data;
-        serviceAjax.get_all_categories().success(function(data, status) {
+        serviceAjax.get_all_categories().success(function(data) {
           var number = data.length;
           var find = false;
           angular.forEach(data, function(category) {
@@ -132,10 +132,29 @@ angular.module('myEasyBudgetFrontendApp')
       }).error(function(status) {
         return console.log(status);
       });
-
     };
 
     $scope.getPercentage = function(amount, target_amount) {
       return Math.round((amount * 100) / target_amount);
     };
+
+    $scope.show_purchases = function() {
+      serviceAjax.get_all_purchase($scope.budget_id).success(function(data) {
+        $scope.purchases = data;
+      }).error(function(status){
+        console.log(status);
+      });
+    };
+
+    $scope.get_name_category = function(id) {
+      var res = null;
+      angular.forEach($scope.goals_categories, function(category) {
+        if(category.id == id) {
+          res = category.nameCategory;
+        }
+      });
+      return res;
+    };
   });
+
+

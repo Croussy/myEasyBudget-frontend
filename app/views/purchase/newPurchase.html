@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="text-center">Nouvel achat</h1>
+  <br/>
+  <div class="col-md-6 col-md-offset-3">
+    <form name="registerForm" data-ng-submit="create_purchase()">
+
+      <div ng-include src="'views/purchase/form.html'"></div>
+
+      <button type="submit" class="btn btn-success">Ajouter l'achat</button>
+      <a href="/#/account/{{account_id}}/budget/{{budget_id}}"><button type="button" class="btn btn-default">Retour</button></a>
+    </form>
+  </div>
+</div>
