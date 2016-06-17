@@ -20,8 +20,13 @@ angular.module('myEasyBudgetFrontendApp')
       });
     };
 
+    $scope.create = function () {
+      $scope.purchase = null;
+    };
+
     $scope.create_purchase = function() {
-      var purchaseJson = {
+      console.log($scope);
+/*      var purchaseJson = {
         "namePurchase": $scope.registerForm.name_purchase.$modelValue,
         "amountPurchase": $scope.registerForm.amount_purchase.$modelValue,
         "nameSeller": $scope.registerForm.name_seller.$modelValue,
@@ -34,7 +39,7 @@ angular.module('myEasyBudgetFrontendApp')
         return $location.path('/account/'+ $scope.account_id +'/budget/'+ $scope.budget_id)
       }).error(function(status) {
         console.log(status);
-      });
+      });*/
     };
 
     $scope.edit = function() {
@@ -49,20 +54,11 @@ angular.module('myEasyBudgetFrontendApp')
     };
 
     $scope.edit_purchase = function() {
-      var purchaseJson = {
-        "namePurchase": $scope.registerForm.name_purchase.$modelValue,
-        "amountPurchase": $scope.registerForm.amount_purchase.$modelValue,
-        "nameSeller": $scope.registerForm.name_seller.$modelValue,
-        "goalCategoryId": $scope.registerForm.category.$modelValue,
-        "date_purchase": $scope.registerForm.date_purchase.$modelValue,
-        "budgetId": $scope.budget_id
-      };
-
-      var goal_category = get_goal_category(purchaseJson.goalCategoryId);
+      var goal_category = get_goal_category($scope.purchase.goalCategoryId);
       goal_category.amountCateg = goal_category.amountCateg - $scope.purchase_amount;
 
       serviceAjax.edit_goal_category(goal_category, goal_category.id).success(function() {
-        serviceAjax.update_purchase(purchaseJson, $routeParams.purchase_id).success(function() {
+        serviceAjax.update_purchase($scope.purchase, $routeParams.purchase_id).success(function() {
           return $location.path('/account/'+ $scope.account_id +'/budget/'+ $scope.budget_id)
         }).error(function(status) {
           console.log(status);
@@ -70,8 +66,6 @@ angular.module('myEasyBudgetFrontendApp')
       }).error(function(status) {
         console.log(status);
       });
-
-
     };
 
     var get_goal_category = function(id) {
