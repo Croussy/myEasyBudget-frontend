@@ -43,16 +43,8 @@ angular.module('myEasyBudgetFrontendApp')
     };
 
     $scope.editAccount = function() {
-      var id = $scope.registerForm.id.$modelValue;
-      var accountJson = {
-        'nameAccount': $scope.registerForm.nameAccount.$modelValue,
-        'description': $scope.registerForm.description.$modelValue,
-        'amount': $scope.registerForm.amount.$modelValue,
-        'nameBank': $scope.registerForm.nameBank.$modelValue
-      };
-
-      return serviceAjax.editAccount(accountJson, id).success(function(data, status) {
-        return $location.path('/account/'+ id);
+      return serviceAjax.editAccount($scope.account, $routeParams.accountId).success(function(data, status) {
+        return $location.path('/account/'+ $routeParams.accountId);
       }).error(function(status) {
         return console.log(status);
       });

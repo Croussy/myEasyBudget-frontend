@@ -34,18 +34,7 @@ angular.module('myEasyBudgetFrontendApp')
     };
 
     $scope.editProject = function() {
-      var projectJson = {
-        'name': $scope.registerForm.name_project.$modelValue,
-        "target_amount": $scope.registerForm.target_amount.$modelValue,
-        "description": $scope.registerForm.description.$modelValue,
-        "dateDeb": $scope.registerForm.date_deb.$modelValue
-      };
-
-      if($scope.registerForm.date_end) {
-        projectJson.dateEnd = $scope.registerForm.date_end.$modelValue;
-      }
-
-      return serviceAjax.edit_project(projectJson, $routeParams.project_id).success(function() {
+      serviceAjax.edit_project($scope.project, $routeParams.project_id).success(function() {
         return $location.path('/projects/');
       }).error(function(status) {
         return console.log(status);
