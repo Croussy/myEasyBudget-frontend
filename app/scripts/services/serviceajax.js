@@ -104,4 +104,22 @@ angular.module('myEasyBudgetFrontendApp')
     this.edit_goal_category = function(dataJson, id) {
       return $http.put('http://localhost:3000/api/goalCategories/'+ id, dataJson);
     };
+
+    // Purchase
+    this.create_purchase = function(dataJson) {
+      return $http.post('http://localhost:3000/api/purchases', dataJson)
+    };
+
+    this.get_all_purchase = function(id) {
+      return $http.get('http://localhost:3000/api/budgets/'+ id +'/purchases');
+    };
+
+    this.get_purchase = function(id) {
+      return $http.get('http://localhost:3000/api/purchases/'+ id);
+    };
+
+    this.update_purchase = function(dataJson, id) {
+      return $http.put('http://localhost:3000/api/purchases/'+ id, dataJson);
+    };
+
   });

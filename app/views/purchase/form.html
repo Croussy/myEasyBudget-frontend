@@ -1,0 +1,28 @@
+<div ng-init="form_purchase()">
+  <div class="form-group">
+    <label for="name_seller">Categorie de l'achat *</label>
+    <select required name="category" id="category" class="form-control" ng-model="purchase.goalCategoryId">
+      <option value="">Selectionner la catégorie</option>
+      <option ng-repeat="category in goals_category" value="{{category.id}}">{{category.nameCategory}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="name_purchase">Nom de l'achat *</label>
+    <input required type="text" class="form-control" name="name_purchase" id="name_purchase" placeholder="Nom de l'achat"
+           data-ng-model="purchase.namePurchase">
+  </div>
+  <div class="form-group">
+    <label for="amount_purchase">Montant de l'achat *</label>
+    <input required type="number" class="form-control" value="1000" min="0" name="amount_purchase" id="amount_purchase" step="1"
+           data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Montant de l'achat" data-ng-model="purchase.amountPurchase" />
+  </div>
+  <div class="form-group">
+    <label for="date_purchase">Date d'achat *</label>
+    <input required type="date" class="form-control" name="date_purchase" id="date_purchase" data-ng-model="purchase.date_purchase">
+  </div>
+  <div class="form-group">
+    <label for="name_seller">Nom du vendeur *</label>
+    <input required type="text" class="form-control" name="name_seller" id="name_seller" placeholder="Nom du vendeur"
+           data-ng-model="purchase.nameSeller">
+  </div>
+</div>

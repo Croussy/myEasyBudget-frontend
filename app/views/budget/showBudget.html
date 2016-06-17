@@ -45,12 +45,32 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div style="background: white; margin-top: 40px; height: 200px;" class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">Achat recent</h1>
+    <div class="row" ng-init="show_purchases()">
+      <div style="background: white; margin-top: 40px;" class="col-md-6 col-md-offset-3">
+        <h1 class="text-center">Achats récents</h1>
         <hr>
+          <div ng-repeat="purchase in purchases | limitTo: 5" class="boxPurchase">
+            <a href="/#/account/{{id}}/budget/{{budget_id}}/purchase/{{purchase.id}}/edit">
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                  <div class="row">
+                    <h3 class="pull-left">{{purchase.namePurchase}} - <i>{{get_name_category(purchase.goalCategoryId)}}</i></h3>
+                    <b><h3 class="pull-right">{{purchase.amountPurchase}} €</h3></b>
+                  </div>
+                  <div class="row">
+                    <i class="pull-left">{{purchase.nameSeller}}</i>
+                    <i class="pull-right">{{purchase.date_purchase | date:'dd/MM/yyyy'}}</i>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <hr>
+          </div>
 
-        <a href=""> <button class="btn btn-primary">Nouvelle achat</button></a>
+        <div class="form-group">
+          <a href="/#/account/{{id}}/budget/{{budget_id}}/purchase/new"> <button class="btn btn-primary">Nouvel achat</button></a>
+        </div>
+        <!--<a href="/#/account/{{id}}/budget/{{budget_id}}/purchases/show"> <button class="btn btn-primary">Nouvel achat</button></a>-->
       </div>
     </div>
   </div>
