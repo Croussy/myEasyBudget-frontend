@@ -131,6 +131,10 @@ angular.module('myEasyBudgetFrontendApp')
       return Math.round((amount * 100) / target_amount);
     };
 
+    $scope.get_status = function(amount, target_amount) {
+      return 100 - $scope.getPercentage(amount, target_amount);
+    };
+
     $scope.show_purchases = function() {
       serviceAjax.get_all_purchase($scope.budget_id).success(function(data) {
         $scope.purchases = data;
