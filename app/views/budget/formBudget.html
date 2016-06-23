@@ -4,9 +4,9 @@
          data-ng-model="budget.name">
 </div>
 <div class="form-group">
-  <label for="amount">Montant du budget *</label>
-  <input required type="number" class="form-control" value="1000" min="0" name="amount" id="amount" step="1"
-         data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Montant du budget" data-ng-model="budget.amount" />
+  <label for="target_amount">Montant du budget *</label>
+  <input required type="number" class="form-control" value="1000" min="1" name="target_amount" id="target_amount" step="1"
+         data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Montant du budget" data-ng-model="budget.target_target_amount" />
 </div>
 <div class="form-group">
   <label for="date_deb">Date de début *</label>
@@ -17,6 +17,4 @@
   <input required type="date" class="form-control" name="date_end" id="date_end" data-ng-model="budget.date_end">
 </div>
 <br />
-
-<input type="hidden" class="form-control" name="id_account" id="id_account" ng-value="id"/>
 

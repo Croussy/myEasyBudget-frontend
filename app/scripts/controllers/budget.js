@@ -67,7 +67,8 @@ angular.module('myEasyBudgetFrontendApp')
       var budgetJson = {
         'accountId': $scope.id,
         'name': $scope.registerForm.name_budget.$modelValue,
-        "amount": $scope.registerForm.amount.$modelValue,
+        "target_amount": $scope.registerForm.target_amount.$modelValue,
+        "amount": $scope.registerForm.target_amount.$modelValue,
         "dateDeb": $scope.registerForm.date_deb.$modelValue,
         "dateEnd": $scope.registerForm.date_end.$modelValue,
         "isClosure": false
