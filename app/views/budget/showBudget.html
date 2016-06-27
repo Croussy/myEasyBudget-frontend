@@ -56,7 +56,7 @@
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                   <div class="row">
-                    <h3 class="pull-left">{{purchase.namePurchase}} - <i>{{get_name_category(purchase.goalCategoryId)}}</i></h3>
+                    <h3 class="pull-left">{{purchase.namePurchase}} - <i>{{get_name_goal(purchase.goalCategoryId)}}</i></h3>
                     <b><h3 class="pull-right">{{purchase.amountPurchase}} €</h3></b>
                   </div>
                   <div class="row">
@@ -70,7 +70,12 @@
           </div>
 
         <div class="form-group">
-          <a href="/#/account/{{id}}/budget/{{budget_id}}/purchase/new"> <button class="btn btn-primary">Ajouter des achats</button></a>
+          <div class="col-md-4 col-sm-4">
+            <a href="/#/account/{{id}}/budget/{{budget_id}}/purchase/new"> <button class="btn btn-primary">Ajouter des achats</button></a>
+          </div>
+          <div class="col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1">
+            <a href="/#/account/{{id}}/budget/{{budget_id}}/purchases/show"> <button class="btn btn-success">Voir tous les achats</button></a>
+          </div>
         </div>
       </div>
     </div>

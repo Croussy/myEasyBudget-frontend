@@ -79,6 +79,10 @@ angular
         templateUrl: 'views/purchase/editPurchase.html',
         controller: 'PurchaseCtrl'
       })
+      .when('/account/:account_id/budget/:budget_id/purchases/show', {
+        templateUrl: 'views/purchase/showPurchases.html',
+        controller: 'PurchaseCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

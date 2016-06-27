@@ -86,6 +86,21 @@ angular.module('myEasyBudgetFrontendApp')
       });
     };
 
+    $scope.show_purchases = function() {
+      serviceAjax.get_all_goals_category_budget($scope.budget_id).success(function(data) {
+        $scope.goals_categories = data;
+      }).error(function(status) {
+        console.log(status);
+      });
+
+      serviceAjax.get_all_purchase($scope.budget_id).success(function(data) {
+        $scope.purchases = data;
+        $scope.unsort_purchases = data;
+      }).error(function(status) {
+        console.log(status);
+      });
+    };
+
     $scope.getPercentage = function(amount, target_amount) {
       return Math.round((amount * 100) / target_amount);
     };
@@ -130,4 +145,18 @@ angular.module('myEasyBudgetFrontendApp')
       var goal = find_list(id_goal, $scope.goals_categories);
       return goal.nameCategory;
     };
+
+    $scope.sort = function(propertyName, bool) {
+      if(bool == 'true') {
+        $scope.propertyName = "amountPurchase";
+        $scope.reversePurchase = true;
+      } else if (bool == "false") {
+        $scope.reversePurchase = null;
+        $scope.propertyName = "amountPurchase";
+      } else {
+        $scope.propertyName = null;
+        $scope.reversePurchase = null;
+      }
+    };
+
   });
