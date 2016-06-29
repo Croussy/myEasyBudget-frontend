@@ -47,8 +47,9 @@ angular.module('myEasyBudgetFrontendApp')
           "nameCategory": get_name_category($scope.new_goal.category_id),
           "categoryId": $scope.new_goal.category_id
         };
-        serviceAjax.create_goal_category_budget($scope.id, goalJson).success(function(data,status) {
+        serviceAjax.create_goal_category_budget($scope.id, goalJson).success(function(data) {
           deleteJson($scope.categories, $scope.new_goal.category_id);
+          $scope.goals_category[0].targetAmountCateg -= data.targetAmountCateg;
           goalJson.id = data.id;
           $scope.new_goal.target_amount = null;
           $scope.new_goal.category_id = null;
@@ -74,6 +75,7 @@ angular.module('myEasyBudgetFrontendApp')
 
         angular.forEach($scope.goals_category, function(goal) {
           if(goal.id == id) {
+            $scope.goals_category[0].targetAmountCateg += goal.targetAmountCateg;
             serviceAjax.get_category(goal.categoryId).success(function(data) {
               $scope.categories.push(data);
             });
@@ -98,8 +100,9 @@ angular.module('myEasyBudgetFrontendApp')
     };
 
     $scope.edit = function() {
-      serviceAjax.get_goal_category($routeParams.goal_category_id).success(function (data, status) {
+      serviceAjax.get_goal_category($routeParams.goal_category_id).success(function (data) {
         $scope.goal_category = data;
+        $scope.old_goal_category = data;
       }).error(function(status) {
         console.log("error");
         console.log(status);
@@ -107,7 +110,8 @@ angular.module('myEasyBudgetFrontendApp')
     };
 
     $scope.editGoal = function() {
-      serviceAjax.edit_goal_category($scope.goal_category, $scope.goal_category.id).success(function (data, status) {
+      serviceAjax.update_other_category({"budget_id": $scope.budget_id, "amount": $scope.old_goal_category.targetAmountCateg});
+      serviceAjax.edit_goal_category($scope.goal_category, $scope.goal_category.id).success(function () {
         return $location.path('/account/'+ $scope.account_id + '/budget/'+ $scope.id);
       }).error(function(status) {
         console.log("error");

@@ -27,7 +27,7 @@
           <hr>
           <div ng-repeat="goal in goals_categories">
             <h3 class="text-center"><b>{{goal.nameCategory}}</b> - <i>{{goal.targetAmountCateg}} €</i>
-              <a href="/#/account/{{id}}/budget/{{budget_id}}/goal_category/{{goal.id}}/edit"><small><span class="glyphicon glyphicon-pencil"></span></small></a>
+              <a ng-hide="goal.nameCategory == 'Autre catégorie'"href="/#/account/{{id}}/budget/{{budget_id}}/goal_category/{{goal.id}}/edit"><small><span class="glyphicon glyphicon-pencil"></span></small></a>
             </h3>
             <div class="progress">
               <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="{{getPercentage(goal.amountCateg, goal.targetAmountCateg)}}"

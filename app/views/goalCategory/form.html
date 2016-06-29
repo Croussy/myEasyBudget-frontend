@@ -15,7 +15,7 @@
         <tr ng-repeat="goal_category in goals_category">
           <td>{{goal_category.nameCategory}}</td>
           <td>{{goal_category.targetAmountCateg}}</td>
-          <td><a href="" ng-click="delete($event)" data-id="{{goal_category.id}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+          <td><a ng-hide="goal_category.nameCategory == 'Autre catégorie'" href="" ng-click="delete($event)" data-id="{{goal_category.id}}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
         </tr>
         </tbody>
       </table>
@@ -30,7 +30,7 @@
         <form name="addCategory" class="form"  data-ng-submit="add_goal()">
           <div class="form-group">
             <div class="col-md-5">
-              <select name="category" id="category" class="form-control" ng-model="new_goal.category_id">
+              <select required name="category" id="category" class="form-control" ng-model="new_goal.category_id">
                 <option value="">Selectionner une catégorie</option>
                 <option ng-repeat="category in categories" value="{{category.id}}">{{category.nameCategory}}</option>
               </select>
