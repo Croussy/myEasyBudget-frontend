@@ -22,36 +22,18 @@
       </div>
 
       <div class="col-md-3">
-        <div style="background: white;" class="col-md-11 col-md-offset-1">
-          <h1 class="text-center">Catégorie</h1>
+        <div style="background: white;"  class="col-md-11 col-md-offset-1">
+          <h1 class="text-center">Dépenses fixes</h1>
           <hr>
-          <div ng-repeat="goal in goals_categories">
-            <h3 class="text-center"><b>{{goal.nameCategory}}</b> - <i>{{goal.targetAmountCateg}} €</i>
-              <a ng-hide="goal.nameCategory == 'Autre catégorie'"href="/#/account/{{id}}/budget/{{budget_id}}/goal_category/{{goal.id}}/edit"><small><span class="glyphicon glyphicon-pencil"></span></small></a>
-            </h3>
-            <div class="progress">
-              <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="{{getPercentage(goal.amountCateg, goal.targetAmountCateg)}}"
-                   aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( getPercentage(goal.amountCateg, goal.targetAmountCateg) + '%' ) }">
-                <span>{{goal.amountCateg}} €</span>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <div class="form-group" ng-show="goals_categories.length == 0">
-            <h3 class="text-center">Aucun objectif n'a été définie </h3>
-            <hr>
-          </div>
-          <div class="form-group" ng-show="number_category > 0">
-            <a href="/#/account/{{id}}/budget/{{budget_id}}/goal_category/new"><button type="button" class="btn btn-success">Ajouter les objectifs</button></a>
-          </div>
-        </div>
+          <h2>Loyer:</h2>
+          <hr>
       </div>
     </div>
-    <div class="row" ng-init="show_purchases()">
-      <div style="background: white; margin-top: 40px;" class="col-md-6 col-md-offset-3">
+    <div class="row">
+      <div style="background: white; margin-top: 40px;" class="col-md-6 col-md-offset-3" ng-init="show_purchases()">
         <h1 class="text-center">Achats récents</h1>
         <hr>
-          <div ng-repeat="purchase in purchases | limitTo: 5" class="boxPurchase">
+          <div ng-repeat="purchase in purchases | limitTo:5 | orderBy: '-date_purchase'" class="boxPurchase">
             <a href="/#/account/{{id}}/budget/{{budget_id}}/purchase/{{purchase.id}}/edit">
               <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -75,6 +57,34 @@
           </div>
           <div class="col-sm-3 col-sm-offset-1 col-md-3 col-md-offset-1">
             <a href="/#/account/{{id}}/budget/{{budget_id}}/purchases/show"> <button class="btn btn-success">Voir tous les achats</button></a>
+          </div>
+        </div>
+        <br/>
+      </div>
+      <div  class="col-md-3">
+        <div style="background: white; margin-top: 40px;" class="col-md-11 col-md-offset-1">
+          <h1 class="text-center">Catégorie</h1>
+          <hr>
+          <div ng-repeat="goal in goals_categories">
+            <div ng-hide="goal.nameCategory == 'Autre catégorie' && goal.amountCateg == 0 ">
+              <h3 class="text-center"><b>{{goal.nameCategory}}</b> - <i>{{goal.targetAmountCateg}} €</i>
+                <a ng-hide="goal.nameCategory == 'Autre catégorie'" href="/#/account/{{id}}/budget/{{budget_id}}/goal_category/{{goal.id}}/edit"><small><span class="glyphicon glyphicon-pencil"></span></small></a>
+              </h3>
+              <div class="progress">
+                <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="{{getPercentage(goal.amountCateg, goal.targetAmountCateg)}}"
+                     aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( getPercentage(goal.amountCateg, goal.targetAmountCateg) + '%' ) }">
+                  <span>{{goal.amountCateg}} €</span>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <div class="form-group" ng-show="goals_categories.length == 0">
+            <h3 class="text-center">Aucun objectif n'a été définie </h3>
+            <hr>
+          </div>
+          <div class="form-group" ng-show="number_category > 0">
+            <a href="/#/account/{{id}}/budget/{{budget_id}}/goal_category/new"><button type="button" class="btn btn-success">Ajouter les objectifs</button></a>
           </div>
         </div>
       </div>

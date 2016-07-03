@@ -94,9 +94,7 @@ angular.module('myEasyBudgetFrontendApp')
       var id = $routeParams.budget_id;
       serviceAjax.get_budget(id).success(function(data, status){
         $scope.budget = data;
-
-        // highchart
-
+        hightchart();
       }).error(function(status) {
         return console.log(status);
       });
@@ -152,6 +150,61 @@ angular.module('myEasyBudgetFrontendApp')
       });
       return res;
     };
+
+    var hightchart = function() {
+      serviceAjax.get_all_goals_category_budget($scope.budget_id).success(function(data) {
+        var data_hightchart = [];
+
+        angular.forEach(data, function(goal) {
+          if(goal.nameCategory != 'Autre catégorie') {
+            data_hightchart.push([goal.nameCategory, goal.amountCateg]);
+          } else if (goal.amountCateg > 0) {
+            data_hightchart.push([goal.nameCategory, goal.amountCateg]);
+          }
+        });
+
+        Highcharts.chart('containerChart', {
+          chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+          },
+          title: {
+            text: 'Répartition<br>des<br>categories',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 40
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+            pie: {
+              dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                  fontWeight: 'bold',
+                  color: 'white',
+                  textShadow: '0px 1px 2px black'
+                }
+              },
+              startAngle: -90,
+              endAngle: 90,
+              center: ['50%', '75%']
+            }
+          },
+          series: [{
+            type: 'pie',
+            name: 'Répartition categories',
+            innerSize: '50%',
+            data: data_hightchart
+          }]
+        });
+      }).error(function(status) {
+        console.log(status);
+      });
+    }
   });
 
 
